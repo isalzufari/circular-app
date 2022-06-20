@@ -55,20 +55,8 @@
                                             </div>
                                         </div>
                                         <div class="col-2 d-flex align-items-center">
-                                            <!-- <form method="post">
-                                                <button name="btnDelete" type="submit" class="btn btn-danger ml-2">Hapus</button>
-                                                <?php
-                                                    // if (isset($_POST["btnDelete"])){
-                                                    //     $id_deleted = $product['id_product'];
-                                                    //     $products_cookie = json_decode($_COOKIE['products'], true);
-                                                    //     $new_products = array_filter($products_cookie, function($product) use ($id_deleted) {
-                                                    //     return ($product['id_product'] != $id_deleted);
-                                                    //     });
-                                                    //     setcookie('products', json_encode($new_products), time()+3600);
-                                                    //     header('Refresh:0');
-                                                    // }
-                                                ?>
-                                            </form> -->
+                                            <!-- <a href="./deleteCart.php?id=<?php echo $product['id_product']; ?>" class="btn btn-danger ml-2">Hapus</a> -->
+                                            <a href="./deleteCart.php?id=<?php echo $product['id_product']; ?>" class="card-link">Delete</a>
                                         </div>
                                     </div>
                                     

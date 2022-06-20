@@ -42,7 +42,7 @@
                     foreach($products as $product):
 
                     if ("$product[status_pembayaran]" == 0) {
-                        echo "<script>location.href = '/config/verifyCheck.php?id=$id'; alert('Anda belum bayar!');</script>;";
+                        // echo "<script>location.href = '/config/verifyCheck.php?id=$id'; alert('Anda belum bayar!');</script>;";
                     }
 
                     $sub_total += $product['price'];

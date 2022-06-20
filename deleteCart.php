@@ -17,7 +17,12 @@
     $new_products = array_filter($products_cookie, function($product) use ($id) {
       return ($product['id_product'] != $id);
     });
-    setcookie('products', json_encode($new_products), time()+3600);
+    if(!$new_products) {
+      setcookie('products','', time()-3600);
+    } else {
+      setcookie('products', json_encode($new_products), time()+3600);
+    }
+    echo "<script>location.href = 'cart.php'; alert('Produk sukses dihapus!');</script>;";
     // echo $new_product['id_product'];
     // foreach ($products_cookie as $product_cookie) {
     //   if ($product_cookie['id_product'] == $id){
@@ -28,10 +33,7 @@
     //     echo "beda";
     //   }
     // }
-  } else {
-    setcookie('products', json_encode($new_product), time()+3600);
-    echo "kosong";
-  };
+  }
 
     // $newarray = array_filter($array, function($var) {
     //   return ($var != 'something');
