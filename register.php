@@ -8,7 +8,7 @@
   <?php require('components/header.php'); ?>
   <section class="text-center d-flex justify-content-center p-5">
     <form class="form-signin" method="POST">
-      <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       <label for="inputNama" class="sr-only mb-2">Nama Lengkap</label>
       <input type="text" name="inputNama" class="form-control mb-3" placeholder="Nama Lengkap" required>
       <label for="inputEmail" class="sr-only mb-2">Email address</label>
@@ -23,22 +23,22 @@
       <?php
         require('./config/config.php');
         if(isset($_POST["btnRegis"])){
-            $nama=$_POST["inputNama"];
-            $email=$_POST["inputEmail"];
-            $password=$_POST["inputPassword"];
-            $telp=$_POST["inputNoTelp"];
-            $alamat=$_POST["inputAlamat"];
-        
-            $query = $db->prepare("SELECT * FROM users WHERE email = ?");
-            $query->execute(array($username));
-            if($query->rowCount() != 0) {
-                echo "<script>alert('User sudah terdaftar');</script>";
-            } else {
-                $simpan = $db->exec("INSERT INTO users(nama, alamat, email, password, no_telp)VALUES('$nama','$alamat','$email','$password','$telp')");
-                if($simpan>0){
-                    echo "<script>alert('Berhasil register');window.location.href='login.php';</script>";
-                }
+          $nama=$_POST["inputNama"];
+          $email=$_POST["inputEmail"];
+          $password=$_POST["inputPassword"];
+          $telp=$_POST["inputNoTelp"];
+          $alamat=$_POST["inputAlamat"];
+      
+          $query = $db->prepare("SELECT * FROM users WHERE email = ?");
+          $query->execute(array($username));
+          if($query->rowCount() != 0) {
+            echo "<script>alert('User sudah terdaftar');</script>";
+          } else {
+            $simpan = $db->exec("INSERT INTO users(nama, alamat, email, password, no_telp)VALUES('$nama','$alamat','$email','$password','$telp')");
+            if($simpan>0){
+              echo "<script>alert('Berhasil register');window.location.href='login.php';</script>";
             }
+          }
         }
       ?>
     </form>

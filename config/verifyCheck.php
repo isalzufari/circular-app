@@ -8,15 +8,13 @@
   foreach($sql_check as $check) {
     if("$check[status_pembayaran]" == 0) {
       $showDom += 1;
-    } else {
-      echo "<script>location.href = '../statusOrder.php';</script>";
     }
   }
 
   if($showDom >= 1) {
     showDom($id);
   } else {
-    // echo "<script>location.href = '../statusOrder.php';</script>";
+    echo "<script>location.href = '../statusOrder.php';</script>";
   }
 
   print($showDom);

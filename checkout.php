@@ -9,6 +9,9 @@
     require('components/header.php');
     require('./config/config.php');
     $id = $_SESSION['id_user'];
+    if (!$id) {
+      header("Location: ./login.php");
+    }
     $sql_users = $db->query("SELECT * FROM `users` WHERE id_user = '$id'");
     $user = $sql_users->fetch();
     $sub_total = 0;
@@ -55,8 +58,9 @@
                                   $sub_total += $product['price'];
                             ?>
                                   <div class="row">
-                                      <div class="col">
-                                          <p><?php echo $product['name'] ?></p>
+                                      <div class="col d-flex align-items-center">
+                                          <img width="52px" class="rounded-circle" src="<?php echo $product['img_url'] ?>" />
+                                          <p class="m-2"><?php echo $product['name'] ?></p>
                                       </div>
                                       <div class="col">
                                           <p>Rp <?php echo number_format($product['price']) ?></p>

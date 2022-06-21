@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php require('components/head.php'); ?>
+  <?php require('../components/head.php'); ?>
   <title>Login</title>
 </head>
 <body class="bg-light">
-  <?php require('components/header.php'); ?>
+  <?php require('./components/header.php'); ?>
   <section class="text-center d-flex justify-content-center p-5">
     <form class="form-signin" method="POST">
-      <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Sign in Administrator</h1>
       <label for="inputEmail" class="sr-only mb-2">Email address</label>
       <input type="email" name="inputEmail" class="form-control mb-3" placeholder="Email address" required="" autofocus="">
       <label for="inputPassword" class="sr-only mb-2">Password</label>
       <input type="password" name="inputPassword" class="form-control mb-3" placeholder="Password" required="">
       <button name="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <hr></hr>
       <?php
-        require('./config/config.php');
+        require('../config/config.php');
         if(isset($_POST["btnLogin"])){
           $email = $_POST["inputEmail"];
           $password = $_POST["inputPassword"];
-          $query = $db->prepare("SELECT * FROM users WHERE email = ?");
+          $query = $db->prepare("SELECT * FROM users WHERE email = ? AND status_admin=1");
           $query->execute(array($email));
           $hasil = $query->fetch();
           if($query->rowCount() == 0) {
@@ -37,9 +36,8 @@
           }
          }
          ?>
-        <p>Belum punya akun? Daftar <a href="./register.php">disini</a>
     </form>
   </section>
-  <?php require('components/footer.php'); ?>
+  <?php require('../components/footer.php'); ?>
 </body>
 </html>

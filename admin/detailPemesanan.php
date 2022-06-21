@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require('components/head.php') ?>
-    <title>Pay</title>
+    <?php require('../components/head.php') ?>
+    <title>Detail Pemesanan</title>
 </head>
 <body>
   <?php 
     require('components/header.php');
-    require('./config/config.php');
-    $id = $_SESSION['id_user'];
+    require('../config/config.php');
+    $id = $_GET['id'];
     $sql = $db->query("SELECT * FROM `users` 
     INNER JOIN `order` ON `order`.id_user = users.id_user
     WHERE `order`.id_user = '$id'");
@@ -18,7 +18,7 @@
   ?>
   <section>
     <div class="container p-5">
-        <h2 class="mb-3">Your order</h2>
+        <h2 class="mb-3">Order <?php echo $orderDetail['nama'] ?></h2>
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -61,14 +61,11 @@
                     <div class="col"><p><b>Total</b></p></div>
                     <div class="col"><p><b>Rp. <?php echo number_format($sub_total + 10000); ?></b></p></div>
                 </div>
-                <div class="d-grid">
-                    <a href="/config/verifyCheck.php" class="btn btn-outline-primary" type="button">CEK PEMBAYARAN</a>
-                </div>
             </div>
         </div>
     </div>
   </section>
-  <?php require('components/footer.php') ?>
+  <?php require('../components/footer.php') ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
